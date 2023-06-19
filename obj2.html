@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Object Detection - RESULT</title>
+    <style>
+        .bounding-box {
+            position: absolute;
+            border: 2px solid red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Object Detection - Result</h1>
+    <div style="position: relative; display: inline-block;">
+        <img src="data:image/jpeg;base64,{{ image_data }}" alt="Result Image">
+        {% for bbox in bounding_boxes %}
+            <div class="bounding-box" style="left:{{ bbox.x }}px; top:{{ bbox.y }}px; width:{{ bbox.width }}px; height:{{ bbox.height }}px;"></div>
+            <div style="position: absolute; left:{{ bbox.x }}px; top:{{ bbox.y - 20 }}px; color: red; font-weight: bold;">{{ bbox.id }}</div>
+        {% endfor %}
+    </div>
+</body>
+</html>
